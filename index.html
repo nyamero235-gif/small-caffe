@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tasa Coffee House</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Caveat:wght@500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f4ebdd;
+  --paper:#fbf5ea;
+  --ink:#2b1d14;
+  --mute:#6f5b4b;
+  --acc:#b5532c;
+  --acc2:#3f5b45;
+  --line:#d9c8b0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1c1410;
+    --paper:#261b15;
+    --ink:#f1e5d3;
+    --mute:#b9a48f;
+    --acc:#e0805a;
+    --acc2:#8fb397;
+    --line:#4a3a2e
+  }
+}
+
+:root[data-theme="dark"]{
+  --bg:#1c1410;
+  --paper:#261b15;
+  --ink:#f1e5d3;
+  --mute:#b9a48f;
+  --acc:#e0805a;
+  --acc2:#8fb397;
+  --line:#4a3a2e
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:70px
+}
+
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.65 'DM Sans',system-ui,sans-serif
+}
+
+h1,h2,h3{
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:600;
+  line-height:1.1;
+  margin:0
+}
+
+.hand{
+  font-family:'Caveat','Comic Sans MS',cursive;
+  color:var(--acc);
+  font-size:1.5rem
+}
+
+a{
+  color:inherit
+}
+
+.wrap{
+  max-width:1040px;
+  margin:auto;
+  padding:0 22px
+}
+
+section{
+  padding:80px 0
+}
+
+/* NAVIGATION */
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px)
+}
+
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:62px
+}
+
+.logo{
+  font-family:'Fraunces',serif;
+  font-size:1.35rem;
+  font-weight:600;
+  text-decoration:none
+}
+
+.logo i{
+  color:var(--acc)
+}
+
+nav ul{
+  display:flex;
+  gap:26px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:.95rem
+}
+
+nav ul a{
+  text-decoration:none;
+  color:var(--mute)
+}
+
+nav ul a:hover{
+  color:var(--ink)
+}
+
+.cartbtn{
+  background:var(--ink);
+  color:var(--bg);
+  border:0;
+  border-radius:99px;
+  padding:8px 16px;
+  font:500 .9rem 'DM Sans',sans-serif;
+  cursor:pointer
+}
+
+@media(max-width:700px){
+  nav ul{
+    display:none
+  }
+}
+
+/* HERO */
+.hero{
+  padding:70px 0 90px
+}
+
+.hero .wrap{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:50px;
+  align-items:center
+}
+
+.hero h1{
+  font-size:clamp(2.6rem,6.5vw,4.9rem);
+  letter-spacing:-.02em;
+  margin:8px 0 22px
+}
+
+.hero h1 em{
+  color:var(--acc);
+  font-weight:400
+}
+
+.hero p{
+  max-width:460px;
+  color:var(--mute);
+  font-size:1.1rem
+}
+
+.btn{
+  display:inline-block;
+  background:var(--acc);
+  color:#fff8ee;
+  text-decoration:none;
+  padding:13px 26px;
+  border-radius:4px;
+  font-weight:500;
+  border:0;
+  cursor:pointer;
+  font-size:1rem;
+  font-family:inherit
+}
+
+.btn.ghost{
+  background:none;
+  color:var(--ink);
+  border:1.5px solid var(--ink);
+  margin-left:8px
+}
+
+/* CUP */
+.cup{
+  position:relative;
+  aspect-ratio:1;
+  max-width:380px;
+  margin:auto;
+  width:100%
+}
+
+.cup .plate{
+  position:absolute;
+  inset:14% 6% 6%;
+  border-radius:50%;
+  background:var(--paper);
+  border:1px solid var(--line);
+  box-shadow:0 20px 40px -20px #0005
+}
+
+.cup .mug{
+  position:absolute;
+  left:24%;
+  right:24%;
+  top:30%;
+  bottom:26%;
+  background:var(--acc);
+  border-radius:8px 8px 46% 46%;
+  box-shadow:inset -14px 0 0 #0002
+}
+
+.cup .mug:before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:8%;
+  height:18%;
+  border-radius:50%;
+  background:#3a2214
+}
+
+.cup .mug:after{
+  content:"";
+  position:absolute;
+  right:-26%;
+  top:22%;
+  width:32%;
+  height:38%;
+  border:9px solid var(--acc);
+  border-left:0;
+  border-radius:0 40px 40px 0
+}
+
+.cup .steam{
+  position:absolute;
+  top:8%;
+  left:42%;
+  width:5px;
+  height:60px;
+  background:var(--line);
+  border-radius:5px;
+  transform:rotate(8deg);
+  box-shadow:20px 10px 0 var(--line),-18px 14px 0 var(--line)
+}
+
+.stamp{
+  position:absolute;
+  right:-2%;
+  top:6%;
+  transform:rotate(12deg);
+  border:2px dashed var(--acc2);
+  color:var(--acc2);
+  border-radius:50%;
+  width:104px;
+  height:104px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  font:600 .8rem/1.2 'DM Sans';
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  background:var(--bg)
+}
+
+@media(max-width:760px){
+  .hero .wrap{
+    grid-template-columns:1fr
+  }
+
+  .cup{
+    max-width:280px
+  }
+}
+
+/* STORY */
+.story{
+  background:var(--paper);
+  border-block:1px solid var(--line)
+}
+
+.story .wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px
+}
+
+.story h2{
+  font-size:clamp(2rem,4vw,3rem);
+  margin:6px 0 20px
+}
+
+.story p{
+  color:var(--mute);
+  margin:0 0 16px
+}
+
+.pillars{
+  display:grid;
+  gap:18px
+}
+
+.pillar{
+  padding:18px 20px;
+  border-left:3px solid var(--acc);
+  background:var(--bg)
+}
+
+.pillar:nth-child(2){
+  border-color:var(--acc2);
+  margin-left:18px
+}
+
+.pillar h3{
+  font-size:1.2rem;
+  margin-bottom:4px
+}
+
+.pillar p{
+  margin:0;
+  font-size:.95rem
+}
+
+@media(max-width:760px){
+  .story .wrap{
+    grid-template-columns:1fr
+  }
+}
+
+/* HEADINGS */
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:34px
+}
+
+.head h2{
+  font-size:clamp(2rem,4vw,3rem)
+}
+
+/* TRENDING */
+.trend{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px
+}
+
+.tcard{
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:22px;
+  position:relative;
+  transform:rotate(-.6deg)
+}
+
+.tcard:nth-child(2){
+  transform:rotate(.8deg);
+  margin-top:16px
+}
+
+.tcard:nth-child(3){
+  transform:rotate(-.3deg)
+}
+
+.rank{
+  font:italic 400 3.4rem/1 'Fraunces',serif;
+  color:var(--acc);
+  opacity:.85
+}
+
+.tcard h3{
+  font-size:1.35rem;
+  margin:6px 0
+}
+
+.bar{
+  height:6px;
+  background:var(--line);
+  border-radius:9px;
+  margin:14px 0 6px;
+  overflow:hidden
+}
+
+.bar b{
+  display:block;
+  height:100%;
+  background:var(--acc2)
+}
+
+.small{
+  font-size:.85rem;
+  color:var(--mute)
+}
+
+@media(max-width:800px){
+  .trend{
+    grid-template-columns:1fr
+  }
+
+  .tcard{
+    transform:none!important;
+    margin:0!important
+  }
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+
+.tab{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--mute);
+  padding:7px 16px;
+  border-radius:99px;
+  cursor:pointer;
+  font:500 .9rem 'DM Sans'
+}
+
+.tab.on{
+  background:var(--ink);
+  color:var(--bg);
+  border-color:var(--ink)
+}
+
+/* MENU */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:22px
+}
+
+.pc{
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:14px
+}
+
+.art{
+  background:var(--line);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  margin-bottom:12px;
+  overflow:hidden;
+  border-radius:3px
+}
+
+.art img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .35s ease
+}
+
+.pc:hover .art img,
+.tcard:hover .art img{
+  transform:scale(1.05)
+}
+
+.tcard .art{
+  aspect-ratio:auto;
+  height:120px
+}
+
+.tcard .art img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.pc h3{
+  font-size:1.15rem
+}
+
+.pc p{
+  margin:3px 0 12px;
+  font-size:.88rem;
+  color:var(--mute);
+  line-height:1.45
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.item{
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+  padding:18px 0;
+  border-bottom:1px dotted var(--mute)
+}
+
+.item .info{
+  flex:1
+}
+
+.item h3{
+  font-size:1.15rem
+}
+
+.item p{
+  margin:2px 0 0;
+  font-size:.9rem;
+  color:var(--mute)
+}
+
+.price{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  white-space:nowrap
+}
+
+.add{
+  border:1.5px solid var(--acc);
+  color:var(--acc);
+  background:none;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:1.3rem;
+  line-height:1;
+  cursor:pointer;
+  flex:none
+}
+
+.add:hover{
+  background:var(--acc);
+  color:#fff
+}
+
+/* VISIT */
+.visit{
+  background:var(--acc2);
+  color:#f6efe2
+}
+
+.visit .wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:34px
+}
+
+.visit h2{
+  font-size:2.4rem;
+  grid-column:1/-1
+}
+
+.visit h3{
+  font-size:1.1rem;
+  margin-bottom:8px;
+  opacity:.85
+}
+
+.visit p{
+  margin:0
+}
+
+@media(max-width:760px){
+  .visit .wrap{
+    grid-template-columns:1fr
+  }
+}
+
+/* FOOTER */
+footer{
+  padding:30px 0 40px;
+  text-align:center;
+  color:var(--mute);
+  font-size:.9rem
+}
+
+/* CART DRAWER */
+#shade{
+  position:fixed;
+  inset:0;
+  background:#0007;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:40
+}
+
+#drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  height:100%;
+  width:min(420px,100%);
+  background:var(--paper);
+  z-index:50;
+  transform:translateX(100%);
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+  padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px))
+}
+
+body.open #shade{
+  opacity:1;
+  pointer-events:auto
+}
+
+body.open #drawer{
+  transform:none
+}
+
+#drawer h2{
+  font-size:1.7rem;
+  display:flex;
+  justify-content:space-between
+}
+
+#drawer h2 button{
+  background:none;
+  border:0;
+  font-size:1.6rem;
+  color:var(--ink);
+  cursor:pointer
+}
+
+#lines{
+  flex:1;
+  overflow:auto;
+  margin:14px 0
+}
+
+.line{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+  gap:8px
+}
+
+.qty button{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  cursor:pointer
+}
+
+.qty span{
+  display:inline-block;
+  min-width:22px;
+  text-align:center
+}
+
+.fields{
+  display:grid;
+  gap:8px;
+  margin-bottom:12px
+}
+
+.fields input,
+.fields select{
+  padding:10px 12px;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  border-radius:4px;
+  font:inherit
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  font:600 1.25rem 'Fraunces',serif;
+  margin-bottom:12px
+}
+
+#drawer .btn{
+  width:100%
+}
+
+.done{
+  text-align:center;
+  padding:40px 10px
+}
+
+.done h3{
+  font-size:2rem;
+  margin:8px 0
+}
+
+.empty{
+  color:var(--mute);
+  text-align:center;
+  padding:40px 0
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Tasa<i>.</i></a>
+
+    <ul>
+      <li><a href="#story">Our story</a></li>
+      <li><a href="#trending">Trending</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+
+    <button class="cartbtn" onclick="toggle(true)">
+      Order · <span id="count">0</span>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+
+    <div>
+      <span class="hand">Brgy. Santa Cruz, Zamboanga del Norte</span>
+
+      <h1>
+        Slow mornings, <em>strong</em> coffee.
+      </h1>
+
+      <p>
+        Tasa is a small corner cafe pouring local Mindanao beans,
+        brewing every cup fresh, and saving you a seat.
+        Order ahead, walk in, and your cup is waiting.
+      </p>
+
+      <p style="margin-top:26px">
+        <a class="btn" href="#menu">Order online</a>
+        <a class="btn ghost" href="#story">Our story</a>
+      </p>
+    </div>
+
+    <div class="cup">
+      <div class="plate"></div>
+      <div class="steam"></div>
+      <div class="mug"></div>
+
+      <div class="stamp">
+        Roasted<br>
+        in small<br>
+        batches
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="story" id="story">
+  <div class="wrap">
+
+    <div>
+      <span class="hand">why we're here</span>
+
+      <h2>
+        A cup should feel like a small pause.
+      </h2>
+
+      <p>
+        Tasa means "cup" in Filipino. Owner Eiron Van T. Yano
+        started it with one grinder, four tables, and a simple idea:
+        good coffee shouldn't be rushed, or overpriced.
+      </p>
+
+      <p>
+        Our beans come from highland farms in Bukidnon and Sultan Kudarat.
+        We pay farmers fairly, roast weekly, and brew every cup fresh.
+      </p>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar">
+        <h3>Local beans</h3>
+        <p>
+          Single-origin Mindanao coffee, roasted a few kilos at a time.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3>Made to order</h3>
+        <p>
+          Every cup is pulled and poured fresh the moment you order.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <h3>Room to stay</h3>
+        <p>
+          Free wifi, warm lights, and nobody will hurry you out.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="trending">
+  <div class="wrap">
+
+    <div class="head">
+      <div>
+        <span class="hand">what everyone's ordering</span>
+        <h2>Trending this week</h2>
+      </div>
+
+      <span class="small">
+        Sample numbers · based on online orders, last 7 days
+      </span>
+    </div>
+
+    <div class="trend" id="trend"></div>
+
+  </div>
+</section>
+
+<section id="menu" style="padding-top:20px">
+  <div class="wrap">
+
+    <div class="head">
+      <div>
+        <span class="hand">fresh, made to order</span>
+        <h2>The menu</h2>
+      </div>
+
+      <span class="small">
+        Tap + to add to your order
+      </span>
+    </div>
+
+    <div class="menu" id="menu-list"></div>
+
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+
+    <h2>Come say hi.</h2>
+
+    <div>
+      <h3>Find us</h3>
+      <p>
+        Brgy. Santa Cruz<br>
+        Zamboanga del Norte
+      </p>
+    </div>
+
+    <div>
+      <h3>Hours</h3>
+      <p>
+        Mon–Fri 7 AM – 8 PM<br>
+        Sat–Sun 8 AM – 9 PM
+      </p>
+    </div>
+
+    <div>
+      <h3>Say hello</h3>
+      <p>
+        <a href="mailto:nyamero235@gmail.com">
+          nyamero235@gmail.com
+        </a>
+        <br>
+
+        <a href="tel:09750682085">
+          0975 068 2085
+        </a>
+        <br>
+
+        <a href="https://claude.ai/artifact/P4qT5BMy7Etr8hZioFZU1c">
+          Our page
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Tasa Coffee House · Owned by Eiron Van T. Yano ·
+  Pickup ready in ~10 minutes · Delivery within 3 km
+</footer>
+
+<div id="shade" onclick="toggle(false)"></div>
+
+<aside id="drawer" aria-label="Your order"></aside>
+
+<script>
+
+const MENU = [
+
+  {
+    id:1,
+    n:"Americano",
+    d:"Double espresso topped with hot water. Bold and clean.",
+    p:60,
+    a:"americano",
+    s:61
+  },
+
+  {
+    id:2,
+    n:"Iced Coffee",
+    d:"Chilled brew over ice with a splash of milk.",
+    p:50,
+    a:"iced",
+    s:88
+  },
+
+  {
+    id:3,
+    n:"Cappuccino",
+    d:"Espresso, steamed milk and a thick layer of foam.",
+    p:80,
+    a:"cappuccino",
+    s:47
+  },
+
+  {
+    id:4,
+    n:"Mocha",
+    d:"Espresso, chocolate and milk, finished with cream.",
+    p:75,
+    a:"mocha",
+    s:52
+  },
+
+  {
+    id:5,
+    n:"Caramel Macchiato",
+    d:"Vanilla milk, espresso on top, caramel drizzle.",
+    p:85,
+    a:"macchiato",
+    s:96
+  }
+
+];
+
+
+/*
+  INDIVIDUAL PRODUCT PHOTOS
+*/
+const ART = {
+
+  americano:`
+    <img
+      src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?auto=format&fit=crop&w=800&q=85"
+      alt="Americano coffee"
+      loading="lazy"
+    >
+  `,
+
+  iced:`
+    <img
+      src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=85"
+      alt="Iced coffee"
+      loading="lazy"
+    >
+  `,
+
+  cappuccino:`
+    <img
+      src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=85"
+      alt="Cappuccino"
+      loading="lazy"
+    >
+  `,
+
+  mocha:`
+    <img
+      src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=800&q=85"
+      alt="Mocha coffee"
+      loading="lazy"
+    >
+  `,
+
+  macchiato:`
+    <img
+      src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=800&q=85"
+      alt="Caramel macchiato"
+      loading="lazy"
+    >
+  `
+
+};
+
+
+const peso = n => "₱" + n.toLocaleString();
+
+let cart = {};
+let ordered = null;
+
+const $ = id => document.getElementById(id);
+
+
+/* TRENDING PRODUCTS */
+
+const top = [...MENU]
+  .sort((a,b) => b.s-a.s)
+  .slice(0,3);
+
+const max = top[0].s;
+
+$("trend").innerHTML = top.map((m,i) => `
+
+  <div class="tcard">
+
+    <div class="art">
+      ${ART[m.a]}
+    </div>
+
+    <div class="rank">
+      ${i+1}
+    </div>
+
+    <h3>
+      ${m.n}
+    </h3>
+
+    <p class="small" style="margin:0">
+      ${m.d}
+    </p>
+
+    <div class="bar">
+      <b style="width:${m.s/max*100}%"></b>
+    </div>
+
+    <div class="small">
+      ${m.s} sold this week
+    </div>
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:14px;
+    ">
+
+      <span class="price">
+        ${peso(m.p)}
+      </span>
+
+      <button
+        class="add"
+        onclick="add(${m.id})"
+        aria-label="Add ${m.n}"
+      >
+        +
+      </button>
+
+    </div>
+
+  </div>
+
+`).join("");
+
+
+/* MENU PRODUCTS */
+
+$("menu-list").innerHTML = MENU.map(m => `
+
+  <div class="pc">
+
+    <div class="art">
+      ${ART[m.a]}
+    </div>
+
+    <h3>
+      ${m.n}
+    </h3>
+
+    <p>
+      ${m.d}
+    </p>
+
+    <div class="row">
+
+      <span class="price">
+        ${peso(m.p)}
+      </span>
+
+      <button
+        class="add"
+        onclick="add(${m.id})"
+        aria-label="Add ${m.n}"
+      >
+        +
+      </button>
+
+    </div>
+
+  </div>
+
+`).join("");
+
+
+/* ADD TO CART */
+
+function add(id){
+
+  cart[id] = (cart[id] || 0) + 1;
+
+  ordered = null;
+
+  render();
+
+  const count = $("count");
+
+  count.animate(
+    [
+      {transform:"scale(1.6)"},
+      {transform:"scale(1)"}
+    ],
+    200
+  );
+}
+
+
+/* CHANGE QUANTITY */
+
+function chg(id,d){
+
+  cart[id] += d;
+
+  if(cart[id] <= 0){
+    delete cart[id];
+  }
+
+  render();
+}
+
+
+/* CART OPEN/CLOSE */
+
+function toggle(o){
+
+  document.body.classList.toggle("open",o);
+
+  if(o){
+    render();
+  }
+}
+
+
+/* TOTAL */
+
+const total = () => {
+
+  return Object.entries(cart).reduce(
+    (s,[id,q]) =>
+      s + MENU.find(m => m.id == id).p * q,
+    0
+  );
+
+};
+
+
+/* RENDER CART */
+
+function render(){
+
+  $("count").textContent =
+    Object.values(cart).reduce(
+      (a,b) => a+b,
+      0
+    );
+
+  const d = $("drawer");
+
+
+  /* ORDER COMPLETE */
+
+  if(ordered){
+
+    d.innerHTML = `
+
+      <h2>
+        Thank you!
+
+        <button onclick="toggle(false)">
+          ×
+        </button>
+      </h2>
+
+      <div class="done">
+
+        <span class="hand">
+          order #${ordered.no}
+        </span>
+
+        <h3>
+          See you soon, ${ordered.name}.
+        </h3>
+
+        <p class="small">
+
+          ${
+            ordered.mode === "Pickup"
+            ?
+            "Your order will be ready for pickup in about 10 minutes."
+            :
+            "Your order is on its way, about 25–35 minutes."
+          }
+
+          <br>
+
+          Total:
+          ${peso(ordered.t)}
+          · pay on ${ordered.mode.toLowerCase()}
+
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  const ids = Object.keys(cart);
+
+
+  d.innerHTML = `
+
+    <h2>
+
+      Your order
+
+      <button
+        onclick="toggle(false)"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </h2>
+
+
+    <div id="lines">
+
+      ${
+        ids.length
+
+        ?
+
+        ids.map(id => {
+
+          const m = MENU.find(x => x.id == id);
+
+          return `
+
+            <div class="line">
+
+              <div>
+
+                <b>
+                  ${m.n}
+                </b>
+
+                <br>
+
+                <span class="small">
+                  ${peso(m.p)}
+                </span>
+
+              </div>
+
+
+              <div class="qty">
+
+                <button onclick="chg(${id},-1)">
+                  −
+                </button>
+
+                <span>
+                  ${cart[id]}
+                </span>
+
+                <button onclick="chg(${id},1)">
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }).join("")
+
+        :
+
+        `
+
+          <div class="empty">
+
+            Nothing here yet.
+            <br>
+
+            Add something warm from the menu.
+
+          </div>
+
+        `
+      }
+
+    </div>
+
+
+    ${
+      ids.length
+
+      ?
+
+      `
+
+        <div class="fields">
+
+          <input
+            id="nm"
+            placeholder="Your name"
+            autocomplete="name"
+          >
+
+          <input
+            id="ph"
+            placeholder="Mobile number"
+            inputmode="tel"
+            autocomplete="tel"
+          >
+
+          <select
+            id="md"
+            onchange="
+              document.getElementById('ad').style.display =
+              this.value=='Delivery' ? 'block' : 'none'
+            "
+          >
+
+            <option>
+              Pickup
+            </option>
+
+            <option>
+              Delivery
+            </option>
+
+          </select>
+
+          <input
+            id="ad"
+            placeholder="Delivery address"
+            style="display:none"
+          >
+
+        </div>
+
+
+        <div class="total">
+
+          <span>
+            Total
+          </span>
+
+          <span>
+            ${peso(total())}
+          </span>
+
+        </div>
+
+
+        <button
+          class="btn"
+          onclick="place()"
+        >
+          Place order
+        </button>
+
+      `
+
+      :
+
+      ""
+
+    }
+
+  `;
+
+}
+
+
+/* PLACE ORDER */
+
+function place(){
+
+  const nm =
+    $("nm").value.trim();
+
+  const ph =
+    $("ph").value.trim();
+
+  const md =
+    $("md").value;
+
+  const ad =
+    $("ad").value.trim();
+
+
+  if(
+    !nm ||
+    !ph ||
+    (md == "Delivery" && !ad)
+  ){
+
+    alert(
+      "Please fill in your name, number" +
+      (md == "Delivery" ? " and address" : "") +
+      "."
+    );
+
+    return;
+  }
+
+
+  ordered = {
+
+    no:Math.floor(
+      100 + Math.random() * 900
+    ),
+
+    name:nm,
+
+    mode:md,
+
+    t:total()
+
+  };
+
+
+  cart = {};
+
+  render();
+
+}
+
+
+/* INITIAL RENDER */
+
+render();
+
+</script>
+
+</body>
+</html>
